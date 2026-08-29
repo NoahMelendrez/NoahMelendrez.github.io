@@ -1,0 +1,427 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --red: #e6392f;
+    --dark-red: #b91f1f;
+    --black: #111;
+    --white: #f7f5ef;
+    --gray: #d9d7d0;
+    --light-gray: #eceae3;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.5;
+}
+
+/* =========================
+    HEADER
+========================= */
+
+header {
+    background: var(--black);
+    color: white;
+    padding: 24px 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+}
+
+.header-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* =========================
+    HERO
+========================= */
+
+.hero {
+    min-height: 55vh;
+    background: var(--red);
+    color: white;
+    padding: 10vh 5vw 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.hero-label {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+}
+
+.hero h1 {
+    max-width: 1100px;
+    font-size: clamp(4rem, 11vw, 10rem);
+    line-height: 0.82;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* =========================
+    INTRO
+========================= */
+
+.intro {
+    padding: 80px 5vw;
+    border-bottom: 2px solid var(--black);
+}
+
+.intro p {
+    max-width: 900px;
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+}
+
+/* =========================
+    CATEGORY NAVIGATION
+========================= */
+
+.fight-section {
+    padding: 80px 5vw;
+}
+
+.section-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    text-transform: uppercase;
+    letter-spacing: -0.07em;
+    line-height: 0.85;
+    margin-bottom: 70px;
+    font-weight: 900;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    background: var(--black);
+    border: 3px solid var(--black);
+}
+
+.category {
+    background: var(--white);
+    min-height: 230px;
+    padding: 35px;
+    text-decoration: none;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.category:hover {
+    background: var(--red);
+    color: white;
+}
+
+.category-number {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.category h2 {
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+}
+
+.category-arrow {
+    font-size: 2rem;
+    align-self: flex-end;
+}
+
+/* =========================
+    ISSUE LIST
+========================= */
+
+.issues {
+    margin-top: 100px;
+}
+
+.issue-group {
+    border-top: 3px solid var(--black);
+}
+
+.issue-group:last-child {
+    border-bottom: 3px solid var(--black);
+}
+
+.issue-group-title {
+    padding: 30px 0;
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.055em;
+    font-weight: 900;
+}
+
+.issue {
+    border-top: 1px solid #999;
+}
+
+.issue-button {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 27px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+.issue-name {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+}
+
+.issue-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--black);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.issue-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.issue-content-inner {
+    overflow: hidden;
+}
+
+.issue-content p {
+    max-width: 800px;
+    padding: 0 0 35px;
+    font-size: 1.15rem;
+    color: #333;
+}
+
+.issue.active .issue-content {
+    grid-template-rows: 1fr;
+}
+
+.issue.active .issue-icon {
+    transform: rotate(45deg);
+}
+
+/* =========================
+   A DAY WITHOUT CAPITALISM
+========================= */
+
+.day-section {
+    padding: 80px 5vw;
+    border-top: 3px solid var(--black);
+}
+
+.day-section .section-title {
+    margin-bottom: 70px;
+}
+
+.day-entries {
+    border-bottom: 3px solid var(--black);
+}
+
+.day-entries .issue {
+    border-top: 3px solid var(--black);
+}
+
+.day-entries .issue:first-child {
+    border-top: 0;
+}
+
+.day-entries .issue-content p + p {
+    margin-top: 25px;
+}
+
+/* =========================
+    SECTION
+========================= */
+
+.section-header {
+    width: 100%;
+    border: 0;
+    border-top: 3px solid var(--black);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    text-align: left;
+}
+
+.section-header .issue-group-title {
+    margin: 0;
+    padding: 0;
+}
+
+.section-header .issue-icon {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.section-header:hover {
+    background: transparent;
+}
+
+.section-summary {
+    border-top: 1px solid #999;
+    margin-top: 25px;
+}
+
+.section-summary .issue-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.section-summary.active .issue-content {
+    grid-template-rows: 1fr;
+}
+
+.section-summary .issue-content-inner {
+    overflow: hidden;
+}
+
+.section-summary p {
+    max-width: 800px;
+    padding: 25px 0 35px;
+    font-size: 1.15rem;
+    color: #333;
+}
+
+.section-summary-button .issue-icon {
+    transition: transform 0.2s ease;
+}
+
+.section-header:has(+ .section-summary.active) .issue-icon {
+    transform: rotate(45deg);
+}
+
+/* =========================
+    LISTS
+========================= */
+
+.issue-content ul,
+.section-summary ul {
+    margin: 0 0 25px 1.5em;
+    padding-left: 1.5em;
+    list-style-type: disc;
+}
+
+.issue-content ol,
+.section-summary ol {
+    margin: 0 0 25px 1.5em;
+    padding-left: 1.5em;
+}
+
+.issue-content li,
+.section-summary li {
+    margin-bottom: 8px;
+}
+
+.issue-content li ul,
+.section-summary li ul {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    list-style-type: circle;
+}
+
+.issue-content li li ul,
+.section-summary li li ul {
+    list-style-type: square;
+}
+
+/* =========================
+    FOOTER
+========================= */
+
+footer {
+    margin-top: 100px;
+    padding: 60px 5vw;
+    background: var(--black);
+    color: white;
+}
+
+footer h2 {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    max-width: 900px;
+}
+
+footer p {
+    margin-top: 40px;
+    max-width: 600px;
+    color: #bbb;
+}
+
+/* =========================
+    MOBILE
+========================= */
+
+@media (max-width: 800px) {
+    .categories {
+        grid-template-columns: 1fr;
+    }
+
+    .category {
+        min-height: 180px;
+    }
+
+    .hero {
+        min-height: 45vh;
+    }
+
+    .intro,
+    .fight-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}

@@ -6,372 +6,7 @@
 
     <title>Houston Deserves More</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --red: #e6392f;
-            --dark-red: #b91f1f;
-            --black: #111;
-            --white: #f7f5ef;
-            --gray: #d9d7d0;
-            --light-gray: #eceae3;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--white);
-            color: var(--black);
-            line-height: 1.5;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            background: var(--black);
-            color: white;
-            padding: 24px 5vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
-        }
-
-        .header-link {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 55vh;
-            background: var(--red);
-            color: white;
-            padding: 10vh 5vw 8vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        .hero-label {
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 0.08em;
-        }
-
-        .hero h1 {
-            max-width: 1100px;
-            font-size: clamp(4rem, 11vw, 10rem);
-            line-height: 0.82;
-            letter-spacing: -0.075em;
-            text-transform: uppercase;
-            font-weight: 900;
-        }
-
-        /* =========================
-           INTRO
-        ========================= */
-
-        .intro {
-            padding: 80px 5vw;
-            border-bottom: 2px solid var(--black);
-        }
-
-        .intro p {
-            max-width: 900px;
-            font-size: clamp(1.5rem, 3vw, 2.8rem);
-            line-height: 1.05;
-            font-weight: 700;
-            letter-spacing: -0.035em;
-        }
-
-        /* =========================
-           CATEGORY NAVIGATION
-        ========================= */
-
-        .fight-section {
-            padding: 80px 5vw;
-        }
-
-        .section-title {
-            font-size: clamp(3rem, 8vw, 7rem);
-            text-transform: uppercase;
-            letter-spacing: -0.07em;
-            line-height: 0.85;
-            margin-bottom: 70px;
-            font-weight: 900;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3px;
-            background: var(--black);
-            border: 3px solid var(--black);
-        }
-
-        .category {
-            background: var(--white);
-            min-height: 230px;
-            padding: 35px;
-            text-decoration: none;
-            color: var(--black);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .category:hover {
-            background: var(--red);
-            color: white;
-        }
-
-        .category-number {
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .category h2 {
-            font-size: clamp(1.8rem, 3vw, 3rem);
-            line-height: 0.95;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-        }
-
-        .category-arrow {
-            font-size: 2rem;
-            align-self: flex-end;
-        }
-
-        /* =========================
-           ISSUE LIST
-        ========================= */
-
-        .issues {
-            margin-top: 100px;
-        }
-
-        .issue-group {
-            border-top: 3px solid var(--black);
-        }
-
-        .issue-group:last-child {
-            border-bottom: 3px solid var(--black);
-        }
-
-        .issue-group-title {
-            padding: 30px 0;
-            font-size: clamp(2rem, 4vw, 4rem);
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: -0.055em;
-            font-weight: 900;
-        }
-
-        .issue {
-            border-top: 1px solid #999;
-        }
-
-        .issue-button {
-            width: 100%;
-            border: 0;
-            background: transparent;
-            padding: 27px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: left;
-            cursor: pointer;
-            font: inherit;
-            color: inherit;
-        }
-
-        .issue-name {
-            font-size: clamp(1.2rem, 2vw, 2rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.025em;
-        }
-
-        .issue-icon {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--black);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-
-        .issue-content {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.35s ease;
-        }
-
-        .issue-content-inner {
-            overflow: hidden;
-        }
-
-        .issue-content p {
-            max-width: 800px;
-            padding: 0 0 35px;
-            font-size: 1.15rem;
-            color: #333;
-        }
-
-        .issue.active .issue-content {
-            grid-template-rows: 1fr;
-        }
-
-        .issue.active .issue-icon {
-            transform: rotate(45deg);
-        }
-
-        /* =========================
-           SECTION
-        ========================= */
-
-        .section-header {
-            width: 100%;
-            border: 0;
-            border-top: 3px solid var(--black);
-            background: transparent;
-            color: inherit;
-            cursor: pointer;
-            padding: 30px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            text-align: left;
-        }
-
-        .section-header .issue-group-title {
-            margin: 0;
-            padding: 0;
-        }
-
-        .section-header .issue-icon {
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-
-        .section-header:hover {
-            background: transparent;
-        }
-
-        .section-summary {
-            border-top: 1px solid #999;
-            margin-top: 25px;
-        }
-
-        .section-summary .issue-content {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.35s ease;
-        }
-
-        .section-summary.active .issue-content {
-            grid-template-rows: 1fr;
-        }
-
-        .section-summary .issue-content-inner {
-            overflow: hidden;
-        }
-
-        .section-summary p {
-            max-width: 800px;
-            padding: 25px 0 35px;
-            font-size: 1.15rem;
-            color: #333;
-        }
-
-        .section-summary-button .issue-icon {
-            transition: transform 0.2s ease;
-        }
-
-        .section-header:has(+ .section-summary.active) .issue-icon {
-            transform: rotate(45deg);
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            margin-top: 100px;
-            padding: 60px 5vw;
-            background: var(--black);
-            color: white;
-        }
-
-        footer h2 {
-            font-size: clamp(2.5rem, 6vw, 6rem);
-            text-transform: uppercase;
-            letter-spacing: -0.06em;
-            line-height: 0.85;
-            max-width: 900px;
-        }
-
-        footer p {
-            margin-top: 40px;
-            max-width: 600px;
-            color: #bbb;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 800px) {
-            .categories {
-                grid-template-columns: 1fr;
-            }
-
-            .category {
-                min-height: 180px;
-            }
-
-            .hero {
-                min-height: 45vh;
-            }
-
-            .intro,
-            .fight-section {
-                padding-top: 60px;
-                padding-bottom: 60px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -406,6 +41,93 @@
         </p>
     </section>
 
+    <!-- A DAY WITHOUT CAPITALISM -->
+
+    <section id="day-without-capitalism" class="day-section">
+
+        <h2 class="section-title">
+            A Day Without<br>
+            Capitalism
+        </h2>
+
+        <div class="day-entries">
+
+            <!-- A DAY UNDER CAPITALISM -->
+
+            <div class="issue">
+
+                <button class="issue-button">
+                    <span class="issue-name">
+                        A Day Under Capitalism
+                    </span>
+
+                    <span class="issue-icon">+</span>
+                </button>
+
+                <div class="issue-content">
+                    <div class="issue-content-inner">
+
+                        <p>
+                            Think about your average day. You wake up early, too early. You get in your car to start your lengthy commute, you’re almost out of gas. Groan. It’s super expensive. The war abroad has ballooned the gas 
+                            prices. It’s a 45-minute commute in bumper to bumper traffic on 610. They recently added another lane and it has only made the situation worse.
+                        <br>
+                        <br>
+                            At work, your boss yells at you for missing a deadline that wasn’t communicated. You want to say something, but you need to keep this job. Your partner got sick from living next to a refinery and depends on 
+                            your health insurance to get the care they need to survive. Your boss is still yelling at you. You grin and bear it. You count down the minutes until your shift ends.
+                        <br>
+                        <br>
+                            At last you clock out. It’s been a long day. On your way home you hit a pothole and pop a tire. Your finances for the month are ruined.
+                        <br>
+                        <br>
+                            At home you start making dinner. You throw out the spinach in your freezer, you heard on the radio that all frozen vegetables have been recalled. You look at your guitar, it’s dusty. You haven’t picked it 
+                            up in ages. You look at your partner, it feels like it’s been forever since you’ve had a date night. You close your eyes and start to dream.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- A DAY UNDER SOCIALISM -->
+
+            <div class="issue">
+
+                <button class="issue-button">
+                    <span class="issue-name">
+                        A Day Under Socialism
+                    </span>
+
+                    <span class="issue-icon">+</span>
+                </button>
+
+                <div class="issue-content">
+                    <div class="issue-content-inner">
+
+                        <p>
+                            You wake up to the sounds of birds chirping, the air smells fresh and not like a tire fire. You get ready for work and take the train. It's a short ride through a sea of greenery. You manage to read a few 
+                            pages of your book. You get to work, you have a 32-hour work week, and you got a raise! Your union got it through negotiations last month. It’s a good job, but if you ever need a change of pace or want to 
+                            try something else, you have the freedom to do that. You and your partner are covered under Medicare for All. It’s time to go home. You have dinner, it’s full of fresh fruits and vegetables, and they’re safe 
+                            to eat! There hasn’t been a recall in years. You and your partner spend the afternoon at the Bayou. You have a picnic, pick up your guitar, and play your partner a song you wrote. The sun is setting, but no 
+                            worries, you have  a 3-day weekend.
+                        <br>
+                        <br>
+                            There’s no ICE, no fear of police, just the freedom to pursue your hobbies, enjoy time with your friends and family.
+                        <br>
+                        <br>
+                        A better world is possible. <br>
+                        A better Houston is possible. <br>
+                        We just have to fight for it. <br>
+                        For all of us. 
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
     <!-- WHAT WE FIGHT FOR -->
 
@@ -480,15 +202,37 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Justice must be restorative, not punitive. We must end for-profit prisons and all penal 
-                                labor. We should demilitarize the police, reorienting towards public service with officers 
-                                recruited from the neighbors they work in. Houston should create a Holistic Assistance 
-                                Response Team (HART) similar to Harris County and funded with the police budget like in 
-                                Austin. The city should recommit to the Vision Zero program to eliminate traffic deaths, 
-                                which disproportionately affect people of color. Houston and Harris county should invest 
-                                more in libraries, staying open in the evenings and Sundays. Alternatives to animal kill 
-                                shelters should be prioritized.
+                                Justice will be restorative, not punitive. We will end the prison industrial complex and the militarization of police. Safety will be community-led, and community-first.
                             </p>
+                            <ul>
+                                <li>End for-profit prisons</li>
+                                <li>End penal labor</li>
+                                <li>Demilitarize the Police/No Tanks on our Streets
+                                    <ul>
+                                        <li>Getting rid of cop cities</li>
+                                        <li>Ending the purchase of military-grade equipment</li>
+                                    </ul>
+                                </li>
+                                <li>Create city version of HART (alternate dispatch)use police budget like Austin does</li>
+                                <li>Vision Zero: No More Traffic Deaths!
+                                    <ul>
+                                        <li>Disproportionately affects POC</li>
+                                        <li>Bring down vehicle speeds</li>
+                                        <li>Westhimer and Gulfton St.</li>
+                                    </ul>
+                                </li>
+                                <li>Adopt the Strays
+                                    <ul>
+                                        <li>Fund more alternatives to kill shelters</li>
+                                    </ul>
+                                </li>
+                                <li>Invest in libraries
+                                    <ul>
+                                        <li>Open-late libraries</li>
+                                        <li>No more closing on Sundays</li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -506,13 +250,28 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                We call for the abolishment of ICE and the removal of the border wall. Houston should end all collaboration between 
-                                its police department and ICE, including refusing to enter into a 287(g) agreement. Additionally, the city should 
-                                create an Immigrant Legal Services Fund similar to Harris County’s, which should be expanded. All Houstonians should 
-                                be made aware of their rights, both online and through community teach-ins. All city and county departments should 
-                                accept library cards as a valid form of ID. Houston and Harris County should cancel all ALPR mass surveillance 
-                                contracts and remove all existing cameras.
+                                Houston is a city of immigrants. More than a fourth of Houstonians in the Greater Houston Area are immigrants. Immigrants have built our city’s streets and homes, care for our children and are an 
+                                integral part of what gives Houston its multicultural character, diversity, and incredible food scene. ICE and the Trump administration’s mass deportation agenda has created a climate of terror and fear 
+                                that is felt in homes, schools, and hospitals. A climate that makes workers fear for their lives on their way to work, that makes children fear they will be separated from their families. This is a 
+                                national emergency and we cannot allow one more murder at the hands of ICE. We will abolish and prosecute ICE.
                             </p>
+                            <ul>
+                                <li>Abolish and prosecute ICE</li>
+                                <li>Close all ICE Detention Internment Camps</li>
+                                <li>End family detention</li>
+                                <li>No more Border Wall</li>
+                                <li>Fund Immigrant Legal Defense</li>
+                                <li>End HPD Collaboration with ICE</li>
+                                <li>Refuse to enter in 287(g) agreement</li>
+                                <li>Expanded Library Card accepted at all city departments as a valid form of ID</li>
+                                <li>Regular Know Your Rights Community Teach-Ins</li>
+                                <li>No More Mass Surveillance
+                                    <ul>
+                                        <li>Cancel all mass surveillance contracts (Flock, vigilant solutions, etc.)</li>
+                                        <li>Take down the cameras!</li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -532,13 +291,22 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Education, from Pre-K to college, should be universally available to all, as well as child 
-                                care. All education jobs should be required to be union jobs, and teachers should have the 
-                                right to collectively bargain. Private & charter schools should be made illegal. A National 
-                                Program for Accelerated Reading should be created to combat falling literacy rates. The HISD 
-                                takeover must be reversed. Superintendents should be democratically elected by their community, 
-                                not appointed by the state. Special education programs should be expanded.
+                                Everyone has the right to an education where they are taught not to hit metrics on a test, but to exercise and grow their creative talents. Childcare and education, from Pre-K to college, will be 
+                                universally available to all. All education jobs will be required to be union jobs, and teachers will have the right to collectively bargain. Private & charter schools will be made illegal. A National 
+                                Program for Accelerated Reading will be created to combat falling literacy rates.
                             </p>
+                                <ul>
+                                    <li>Make private & charter schools illegal</li>
+                                    <li>Free Universal Child Care</li>
+                                    <li>Mandate teacher union membership</li>
+                                    <li>Commit to expanding and maintaining special education programs in schools</li>
+                                    <li>Reverse the HISD Takeover</li>
+                                    <li>Make the HISD Superintendent an elected position</li>
+                                    <li>Free college</li>
+                                    <li>Abolish student debt</li>
+                                    <li>National Program for Accelerated Reading</li>
+                                    <li>Universal Pre-K</li>
+                                </ul>
                         </div>
                     </div>
 
@@ -558,10 +326,18 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                The U.S. should cease all offensive operations, including blockades, embargoes, and sanctions. 
-                                All offensive and defensive weapons sales to Israel should cease, in particular those shipped 
-                                from the Port of Houston.
+                                Houston is home to one of the largest Palestinian communities in the country, many of whom have been displaced through decades of military occupation, apartheid, and for the last three years, genocide. 
+                                All of these have been monetarily, infrastructurally, and politically supported by the United States. There must be recognition of the Palestinian people and their right to return and self-determine in 
+                                their homeland. Real intervention must be made in one of the most horrific crimes of our lifetime through a commitment to ending all military and economic aid to Israel, and independence from this 
+                                project must be assured through a complete rejection of money from the Israel lobby, particularly AIPAC.
                             </p>
+                                <ul>
+                                    <li>The U.S. will cease all offensive operations, including blockades, embargoes, and sanctions. All offensive and defensive weapons sales to Israel will cease, in particular those shipped from the 
+                                        Port of Houston.</li>
+                                    <li>Support legislation which commits Houston’s public infrastructure to upholding international human rights law</li>
+                                    <li>Support the implementation of an Arms Embargo on Israel through local and national legislation (see: Block The Bombs, etc) </li>
+                                    <li>Oppose provision 219 of the National Defense Authorization Act</li>
+                                </ul>
                         </div>
                     </div>
 
@@ -586,17 +362,29 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Everyone is entitled to a job, every job should pay a living wage, and workers deserve a say 
-                                in how their workplace is run. City contractors should be required to pay a $23/hr minimum 
-                                wage, and to offer worker’s compensation, healthcare and childcare benefits for all 
-                                city-contracted workers and their dependents. Contractors that have engaged in wage theft 
-                                or OSHA violations should be blacklisted from any future contract offers. Houston City 
-                                College should create a workforce union job pipeline program. Municipal city internet should 
-                                be provided to reflect the necessity of internet access in the 21st century. Businesses should 
-                                be required to offer paid family leave. Public companies with over one thousand employees must 
-                                have 30% board representation composed of members voted by the workers to represent their 
-                                interests.
+                                Texas is a leading state in worker exploitation and we aim to be on the front lines of this class war. We understand that Labor Power is the greatest tool in our arsenal for enacting radical change in 
+                                this country. All workers will be advocating on their own behalf on the shop floor, in the union hall, and beyond. Our elected officials will use every resource available to them to combat the oppression 
+                                of the working class against mega-corporations and the ruling class.
                             </p>
+                            <ul>
+                                <li>32-hour work week</li>
+                                <li>Universal Basic Income</li>
+                                <li>Require City contractors to pay a living wage $22/hr
+                                    <ul>
+                                        <li>Ban contractors that have had any wage theft or OSHA violations from working with the city</li>
+                                        <li>Required workers comp</li>
+                                        <li>Require healthcare benefits for all city contracted workers and their dependents</li>
+                                        <li>Provide childcare benefits</li>
+                                    </ul>
+                                </li>
+                                <li>Create a Workforce union job pipeline program with the Houston City College</li>
+                                <li>Subsidize Worker-owned businesses</li>
+                                <li>Fines for wage theft</li>
+                                <li>Municipal city internet</li>
+                                <li>Universal childcare</li>
+                                <li>Paid family leave</li>
+                                <li>All public corporations will have boards comprised of representatives chosen by the workers</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -614,16 +402,48 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Everyone has a right to a home. Displaced tenants should be provided relocation assistance. 
-                                Eviction should not be allowed without representation. Notice of tenants rights in the spoken 
-                                language of the tenant should be required with eviction notices. Junk fees, including pet 
-                                rent, should be made illegal. Landlords should be required to register with the city. There 
-                                should be a fine for deposit theft, as well as for positive black mold tests. Houston should 
-                                pass an empty homes tax, as well as raise taxes on out of state property owners. Houston 
-                                should pass a Fair Housing Ordinance to prevent discrimination against any group of people, 
-                                and repeal the Food Sharing Ordinance. Instead of buyouts, Houston should provide elevation 
-                                assistance for at-risk homes. The Houston Housing Authority should be expanded.
+                                Housing is a human right. Everyone deserves to have an affordable, safe, dignified place to live. For so many people, the idea of being able to afford a home feels like a dream out of reach. Housing will 
+                                be decommodified and affordable. 
                             </p>
+                                <ul>
+                                    <li>Know Your Tenant Rights!
+                                        <ul>
+                                            <li>Notice of Tenants rights (in multiple languages) required with eviction notices </li>
+                                            <li>Tenant rights community teach ins</li>
+                                        </ul>
+                                    </li>
+                                    <li>Relocation Assistance for displaced tenants</li>
+                                    <li>No Eviction without Representation</li>
+                                    <li>Fair Housing Ordinance
+                                        <ul>
+                                            <li>Anti-discrimination</li>
+                                            <li>Protect LGBTQ, gender, marital status, student status, age, etc.</li>
+                                        </ul>
+                                    </li>
+                                    <li>No More Pet Rent!
+                                        <ul>
+                                            <li>No more junk fees</li>
+                                        </ul>
+                                    </li>
+                                    <li>Expand the Houston Housing Authority</li>
+                                    <li>Repeal food sharing ordinance</li>
+                                    <li>Protect our homes!
+                                        <ul>
+                                            <li>Elevation assistance instead of buyouts</li>
+                                        </ul>
+                                    </li>
+                                    <li>No More Slumlords!
+                                        <ul>
+                                            <li>Landlords register with the city</li>
+                                            <li>Deposit theft fine</li>
+                                            <li>Formalize a process for if Black Mold Testing comes back positive</li>
+                                            <li>Fine for landlords for black mold</li>
+                                            <li>Empty homes tax</li>
+                                            <li>Higher taxes on out of state property owners</li>
+                                            <li>Deed theft protection</li>
+                                        </ul>
+                                    </li>
+                                </ul>
                         </div>
                     </div>
 
@@ -643,14 +463,33 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Everyone has a right to healthcare, including mental, dental, and vision, as well as family 
-                                planning. We should invest more in medical research and disease prevention. 
+                                Healthcare is a human right. Everyone will have access to healthcare, including mental, dental, and vision, as well as family planning. We will invest more in medical research and disease prevention.  
                             </p>
                         </div>
                     </div>
 
                 </div>
 
+                <div class="issue">
+
+                    <button class="issue-button">
+                        <span class="issue-name">
+                            Justice for Queer Houstonians
+                        </span>
+
+                        <span class="issue-icon">+</span>
+                    </button>
+
+                    <div class="issue-content">
+                        <div class="issue-content-inner">
+                            <p>
+                                All members of the LGBTQ+ community deserve the freedom to exercise their rights the same as everyone else. The state of Texas has taken away protections for queer and Trans Texans. We will pass 
+                                national-level protections to codify everyone’s right to identify, live and love as they please. 
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
 
                 <div class="issue">
 
@@ -665,12 +504,20 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                The Strong Mayor system must be replaced with a more powerful city council. Community 
-                                members, workers, and union members should be appointed to their respective board chairs. 
-                                End tax abatements for corporations. A database of city-owned parcels should be developed, 
-                                and flood prone parcels should be held in a land bank as a publicly controlled asset, and the 
-                                decision on how to develop these lands should be voted on by the community.
+                                The Strong Mayor system will be replaced with a more powerful city council. Community members, workers, and union members will be appointed to their respective board chairs.
                             </p>
+                            <ul>
+                                <li>Appointing Community members, workers, and union members to become Board Chairs</li>
+                                <li>Develop a database for tracking city-owned parcels</li>
+                                <li>Develop public land for the community’s benefit
+                                    <ul>
+                                        <li>Hold flood-prone parcels in land bank as a publicly controlled asset</li>
+                                        <li>Community members get to decide what it becomes a park, flood detention, community garden, affordable housing, etc.</li>
+                                    </ul>
+                                </li>
+                                <li>Get rid of the Strong Mayor System!</li>
+                                <li>No more tax abatements for corporations</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -695,44 +542,49 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Our economy must divest from fossil fuels, while creating good union jobs in the process. In 
-                                the meantime, workers in the fossil fuel industry should have greater protections, especially 
-                                in the Permian Basin. FEMA must be fully funded, and cuts to the CDC must be undone to bring 
-                                back safer food regulations. The government must subsidize community investment in solar 
-                                energy and other renewable sources.There should be an indefinite moratorium on data center 
-                                construction until a system can be created wherein residents participate in the decision to 
-                                construct any new centers, as well as sharing in profits.
+                                Our economy will divest from fossil fuels, while creating good union jobs in the process. In the meantime, workers in the fossil fuel industry will have greater protections. The government will 
+                                subsidize community investment in solar energy and other renewable sources.
                             </p>
+                            <ul>
+                                <li>Detransitioning the national economy from fossil fuels
+                                    <ul>
+                                        <li>Creating good union jobs in the process</li>
+                                        <li>More protection for workers working in the fossil fuel industry (Permian Basin)</li>
+                                    </ul>
+                                </li>
+                                <li>Fund FEMA again!</li>
+                                <li>Regulate food and undo the cuts to the CDC</li>
+                                <li>We can’t rely on the grid!
+                                    <ul>
+                                        <li>Create Resilience Centers
+                                            <ul>
+                                                <li>Microgrid Facility at Cooling and Heating Centers, create resilience hubs</li>
+                                                <li>Solar with battery storage system</li>
+                                                <li>Run for 72 hours without the grid</li>
+                                                <li>Demand that Centerpoint subsidize these infrastructure improvements to existing cooling and heating centers in exchange for continuing city contract</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>No more Polluters!
+                                    <ul>
+                                        <li>Any industrial facility seeking a city contract, tax abatement, or city infrastructure permit must disclose emissions data and clean up standards per city contract conditions</li>
+                                        <li>Subsidize community’s investment in solar</li>
+                                        <li>City run real-time air quality control sensors and alert system </li>
+                                        <li>Use eminent domain for repeat offenders</li>
+                                        <li>indefinite moratorium on AI (hyerscale) data center construction until a system can be created wherein residents participate in the decision to construct any new centers, as well as sharing 
+                                            in profits.</li>
+                                        <li>Divest from CERAWEEK as a city</li>
+                                    </ul>   
+                                </li>
+                                <li>City-run recycling</li>
+                                <li>Create a city composting program</li>
+                                <li>Make Trees for Houston a government-run program</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-
-                <div class="issue">
-
-                    <button class="issue-button">
-                        <span class="issue-name">
-                            An Ecosocialist Houston
-                        </span>
-
-                        <span class="issue-icon">+</span>
-                    </button>
-
-                    <div class="issue-content">
-                        <div class="issue-content-inner">
-                            <p>
-                                Funding for Resilience Hubs should be subsidized by CenterPoint Energy in exchange for 
-                                continuing their city contract. Harris and the surrounding counties must install and maintain 
-                                real-time air quality control sensors with an alert system. Any industrial facility seeking 
-                                a city contract or infrastructure permit must disclose their emissions data and keep to 
-                                standards outlined in city ordinances or contracts. Eminent domain should be utilized against 
-                                repeat offenders. Recycling should be city-run, and a composting program should be created. 
-                                Trees for Houston should also be city-funded.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
 
                 <div class="issue">
 
@@ -747,14 +599,21 @@
                     <div class="issue-content">
                         <div class="issue-content-inner">
                             <p>
-                                Sidewalks must be formally made the responsibility of the city, with a property owner fee 
-                                for their maintenance. The city should fund a bicycle rideshare program and invest in bike 
-                                infrastructure. Houston should minimum parking requirements for new construction, and expand 
-                                parking benefit districts to increase investment in local infrastructure. METRO should pilot 
-                                a fare free program for one month. MetroNEXT should be implemented as originally voted on, 
-                                including the voter approved Gulfton Bus Rapid Transit. The Green Line should be expanded to 
-                                connect to Hobby Airport. Houston should commit to road diets to reduce pollution and allow 
-                                for more bike and pedestrian infrastructure.
+                                Sidewalks will be formally made the responsibility of the city, and the city will invest in bicycle and pedestrian infrastructure. METRO will be expanded, until it is the best mode of vehicular 
+                                transportation for all Houstonians.
+                                <ul>
+                                    <li>Invest in pedestrian and biking infrastructure</li>
+                                    <li>Formally make sidewalks the responsibility of the city</li>
+                                    <li>Bring back Houston BCycle (bicycle rideshare) to be funded by the city</li>
+                                    <li>Invest in bike infrastructure, connecting trails to each other</li>
+                                    <li>Fee for the property owners to maintain the sidewalk (denver is $150/yr)</li>
+                                    <li>Get rid of parking minimums via ordinance like Austin</li>
+                                    <li>Expand Parking Benefits Districts
+                                        <ul>
+                                            <li>Take meter money, run by the city, captures money and funds it like a TIRZ spent on local infrastructure improvements </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </p>
                         </div>
                     </div>
@@ -782,31 +641,6 @@
 
     </footer>
 
-
-    <script>
-
-       const issues = document.querySelectorAll(".issue");
-
-issues.forEach(issue => {
-    const button = issue.querySelector(".issue-button");
-
-    button.addEventListener("click", () => {
-        issue.classList.toggle("active");
-    });
-});
-
-
-const summaries = document.querySelectorAll(".section-summary");
-
-summaries.forEach(summary => {
-    const button = summary.previousElementSibling
-
-    button.addEventListener("click", () => {
-        summary.classList.toggle("active");
-    });
-});
-
-    </script>
-
+    <script src="script.js"></script>   
 </body>
 </html>
